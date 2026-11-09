@@ -1,0 +1,31 @@
+name: Deploy to Azure App Service (Free Tier)
+
+on:
+  workflow_dispatch:
+  # Trigger manually or uncomment to auto-deploy on main push:
+  # push:
+  #   branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 9
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Restore & Publish Web API
+      run: |
+        dotnet publish backend/backend.Host/backend.Host.csproj -c Release -o ./publish
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'codearena-api' # Replace with your Azure Web App name
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ./publish

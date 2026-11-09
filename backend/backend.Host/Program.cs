@@ -6,6 +6,10 @@ using Modules.Identity.Infrastructure.Database;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
 builder
     .AddApi()
     .AddSwagger()
@@ -22,6 +26,17 @@ if (app.Environment.IsDevelopment())
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "CodeArena AI v1");
     });
+}
+
+// Automatically apply multi-DbContext migrations across Supabase PostgreSQL
+await app.ApplyMigrationsAsync();
+
+// Seed initial roles (Admin, Recruiter, Candidate)
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    await IdentityDataSeeder.SeedRolesAsync(roleManager, logger);
 }
 
 // Global RFC 7807 Problem Details

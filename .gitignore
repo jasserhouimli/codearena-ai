@@ -9,9 +9,13 @@ obj/
 ## Node / Frontend
 node_modules/
 dist/
-.env.local
-.env.*.local
+.env
+.env.*
 *.log
+
+# Secrets & Local Overrides
+appsettings.Local.json
+*.local.json
 
 ## OS Files
 .DS_Store

@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/Assessments/">
+    <Project Path="Modules/Assessments/Modules.Assessments.Domain/Modules.Assessments.Domain.csproj" />
+    <Project Path="Modules/Assessments/Modules.Assessments.Features/Modules.Assessments.Features.csproj" />
+    <Project Path="Modules/Assessments/Modules.Assessments.Infrastructure/Modules.Assessments.Infrastructure.csproj" />
+    <Project Path="Modules/Assessments/Modules.Assessments.PublicApi/Modules.Assessments.PublicApi.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Common/">
+    <Project Path="Modules/Common/Modules.Common.Features/Modules.Common.Features.csproj" />
+    <Project Path="Modules/Common/Modules.Common.Infrastructure/Modules.Common.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Identity/">
+    <Project Path="Modules/Identity/Modules.Identity.Domain/Modules.Identity.Domain.csproj" />
+    <Project Path="Modules/Identity/Modules.Identity.Features/Modules.Identity.Features.csproj" />
+    <Project Path="Modules/Identity/Modules.Identity.Infrastructure/Modules.Identity.Infrastructure.csproj" />
+    <Project Path="Modules/Identity/Modules.Identity.PublicApi/Modules.Identity.PublicApi.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Recruitment/">
+    <Project Path="Modules/Recruitment/Modules.Recruitment.Domain/Modules.Recruitment.Domain.csproj" />
+    <Project Path="Modules/Recruitment/Modules.Recruitment.Features/Modules.Recruitment.Features.csproj" />
+    <Project Path="Modules/Recruitment/Modules.Recruitment.Infrastructure/Modules.Recruitment.Infrastructure.csproj" />
+    <Project Path="Modules/Recruitment/Modules.Recruitment.PublicApi/Modules.Recruitment.PublicApi.csproj" />
+  </Folder>
+  <Project Path="backend.Host/backend.Host.csproj" />
+</Solution>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Modules.Recruitment.Features</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.Recruitment.Domain\Modules.Recruitment.Domain.csproj" />
+    <ProjectReference Include="..\Modules.Recruitment.Infrastructure\Modules.Recruitment.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules.Recruitment.PublicApi\Modules.Recruitment.PublicApi.csproj" />
+    <ProjectReference Include="..\..\Identity\Modules.Identity.PublicApi\Modules.Identity.PublicApi.csproj" />
+    <ProjectReference Include="..\..\Common\Modules.Common.Features\Modules.Common.Features.csproj" />
+  </ItemGroup>
+
+</Project>

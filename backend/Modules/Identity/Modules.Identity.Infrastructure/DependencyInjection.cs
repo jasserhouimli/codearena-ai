@@ -38,6 +38,8 @@ public static class DependencyInjection
             .AddDefaultTokenProviders();
 
         services.AddScoped<IIdentityApi, IdentityApi>();
+        services.AddScoped<IJwtTokenService, JwtTokenService>();
+        services.AddHttpClient<IGitHubAuthService, GitHubAuthService>();
 
         return services;
     }

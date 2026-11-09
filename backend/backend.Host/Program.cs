@@ -1,5 +1,8 @@
 using backend.Host;
 using backend.Host.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Modules.Identity.Domain.Entities;
+using Modules.Identity.Infrastructure.Database;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +24,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Global RFC 7807 Exception Handler
+// Global RFC 7807 Problem Details
 app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
@@ -31,7 +34,7 @@ app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Automatically map all vertical slice endpoints registered from all modules
+// Automatically map all vertical slice endpoints registered across all modules
 app.MapEndpoints();
 
 app.MapGet("/health", () => Results.Ok(new { status = "Healthy", timestamp = DateTime.UtcNow }))

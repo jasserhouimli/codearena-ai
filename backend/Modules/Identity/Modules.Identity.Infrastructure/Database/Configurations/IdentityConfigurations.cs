@@ -8,17 +8,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.ToTable("users");
-
-        builder.HasKey(u => u.Id);
-
-        builder.Property(u => u.Email)
-            .IsRequired()
-            .HasMaxLength(256);
-
-        builder.HasIndex(u => u.Email)
-            .IsUnique();
-
         builder.Property(u => u.FullName)
             .IsRequired()
             .HasMaxLength(150);
@@ -37,9 +26,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Bio)
             .HasMaxLength(1000);
 
-        builder.Property(u => u.PasswordHash)
-            .HasMaxLength(500);
-
         builder.Property(u => u.IsActive)
             .IsRequired()
             .HasDefaultValue(true);
@@ -53,21 +39,6 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {
-        builder.ToTable("roles");
-
-        builder.HasKey(r => r.Id);
-
-        builder.Property(r => r.Name)
-            .IsRequired()
-            .HasMaxLength(50);
-
-        builder.Property(r => r.NormalizedName)
-            .IsRequired()
-            .HasMaxLength(50);
-
-        builder.HasIndex(r => r.NormalizedName)
-            .IsUnique();
-
         builder.Property(r => r.Description)
             .HasMaxLength(250);
 
@@ -94,25 +65,5 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
                 Description = "Candidate / Developer"
             }
         );
-    }
-}
-
-public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
-{
-    public void Configure(EntityTypeBuilder<UserRole> builder)
-    {
-        builder.ToTable("user_roles");
-
-        builder.HasKey(ur => new { ur.UserId, ur.RoleId });
-
-        builder.HasOne(ur => ur.User)
-            .WithMany(u => u.UserRoles)
-            .HasForeignKey(ur => ur.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(ur => ur.Role)
-            .WithMany(r => r.UserRoles)
-            .HasForeignKey(ur => ur.RoleId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }
